@@ -2,8 +2,7 @@ const body = document.querySelector('body');
 const buttonStart = document.querySelector('button[data-start]');
 const buttonStop = document.querySelector('button[data-stop]');
 
-buttonStart.addEventListener('click', onBtnStart);
-function onBtnStart(e) {
+buttonStart.addEventListener('click', () => {
   if (buttonStart) {
     buttonStart.disabled = true;
     buttonStop.disabled = false;
@@ -11,7 +10,7 @@ function onBtnStart(e) {
   intervalChangeColor = setInterval(() => {
     body.style.backgroundColor = getRandomHexColor();
   }, 1000);
-}
+});
 
 buttonStop.addEventListener('click', () => {
   if (buttonStop) {
