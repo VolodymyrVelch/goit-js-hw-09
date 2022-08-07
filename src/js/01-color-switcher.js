@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 const buttonStart = document.querySelector('button[data-start]');
 const buttonStop = document.querySelector('button[data-stop]');
+let intervalChangeColor = null;
 
 buttonStart.addEventListener('click', () => {
   if (buttonStart) {
