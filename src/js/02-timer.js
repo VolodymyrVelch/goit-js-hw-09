@@ -26,7 +26,7 @@ flatpickr('#datetime-picker', {
 
       startBtn.addEventListener('click', () => {
         startBtn.disabled = true;
-        timer = setInterval(() => {
+        const timer = setInterval(() => {
           const cuerentTime = Date.now();
           const deltaTime = choosenTime - cuerentTime;
           const { days, hours, minutes, seconds } = convertMs(deltaTime);
