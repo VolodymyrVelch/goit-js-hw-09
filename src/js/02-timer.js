@@ -26,7 +26,8 @@ flatpickr('#datetime-picker', {
 
       startBtn.addEventListener('click', () => {
         startBtn.disabled = true;
-        const timer = setInterval(() => {
+        let timerId = null;
+        timerId = setInterval(() => {
           const cuerentTime = Date.now();
           const deltaTime = choosenTime - cuerentTime;
           const { days, hours, minutes, seconds } = convertMs(deltaTime);
@@ -37,7 +38,7 @@ flatpickr('#datetime-picker', {
           secondsContent.textContent = `${seconds}`;
 
           if (deltaTime <= 0) {
-            clearInterval(timer);
+            clearInterval(timerId);
           }
         }, 1000);
       });
