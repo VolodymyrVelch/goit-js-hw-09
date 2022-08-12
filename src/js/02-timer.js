@@ -37,7 +37,7 @@ flatpickr('#datetime-picker', {
           minutesContent.textContent = `${minutes}`;
           secondsContent.textContent = `${seconds}`;
 
-          if (deltaTime <= 0) {
+          if (deltaTime <= 1000) {
             clearInterval(timerId);
           }
         }, 1000);
