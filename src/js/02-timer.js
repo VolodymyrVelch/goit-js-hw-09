@@ -10,6 +10,7 @@ const daysContent = document.querySelector('[data-days]');
 const hoursContent = document.querySelector('[data-hours]');
 const minutesContent = document.querySelector('[data-minutes]');
 const secondsContent = document.querySelector('[data-seconds]');
+const input = document.querySelector('#datetime-picker');
 startBtn.disabled = true;
 
 flatpickr('#datetime-picker', {
@@ -31,6 +32,7 @@ flatpickr('#datetime-picker', {
           const cuerentTime = Date.now();
           const deltaTime = choosenTime - cuerentTime;
           const { days, hours, minutes, seconds } = convertMs(deltaTime);
+          console.log(timerId);
 
           daysContent.textContent = `${days}`;
           hoursContent.textContent = `${hours}`;
@@ -41,6 +43,9 @@ flatpickr('#datetime-picker', {
             clearInterval(timerId);
           }
         }, 1000);
+        if (timerId) {
+          input.disabled = true;
+        }
       });
     } else {
       Notiflix.Notify.failure('Please choose date in future');

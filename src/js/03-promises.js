@@ -7,6 +7,22 @@ let stepDelay = 0;
 let amountVal = 0;
 let promiseDelay = firstDelay;
 
+// створюємо функцію проміс
+const createPromise = (position, delay) => {
+  return new Promise((resolve, reject) => {
+    const shouldResolve = Math.random() > 0.3;
+    setTimeout(() => {
+      if (shouldResolve) {
+        // Fulfill
+        resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+      }
+      // Reject
+      reject(`❌ Rejected promise ${position} in ${delay}ms`);
+    }, promiseDelay);
+  });
+};
+
+// додаємо слухач при кліку на сабміт
 form.addEventListener('submit', event => {
   event.preventDefault();
   const {
@@ -21,19 +37,7 @@ form.addEventListener('submit', event => {
     let position = i + 1;
     promiseDelay += stepDelay;
 
-    const createPromise = (position, delay) => {
-      return new Promise((resolve, reject) => {
-        const shouldResolve = Math.random() > 0.3;
-        setTimeout(() => {
-          if (shouldResolve) {
-            // Fulfill
-            resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
-          }
-          // Reject
-          reject(`❌ Rejected promise ${position} in ${delay}ms`);
-        }, promiseDelay);
-      });
-    };
+    // при кліку  викликаємо проміс з кроком заданої затримки доданої до початкової
 
     createPromise(position, promiseDelay)
       .then(result => {
